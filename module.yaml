@@ -1,0 +1,17 @@
+notests *default:
+  build:
+    target: DotNext.SysMetrics.sln
+    configuration: NoTests
+    tool:
+      name: dotnet
+
+  install:
+    - DotNext.SysMetrics/bin/Release/netstandard2.0/DotNext.SysMetrics.dll
+
+  deps:
+    - vostok.devtools
+
+full-build > notests:
+  build:
+    target: DotNext.SysMetrics.sln
+    configuration: Release

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  
+  <PropertyGroup>
+    <Configurations>Debug;Release</Configurations>
+    <LangVersion>latest</LangVersion>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>net472;netcoreapp2.1</TargetFrameworks>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <VersionPrefix>0.0.1</VersionPrefix>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Title>DotNext.SysMetrics</Title>
+    <Description>DotNext.SysMetrics</Description>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" Version="0.11.3" />
+    <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="4.5.0" />
+    <PackageReference Include="Vostok.Sys.Metrics.PerfCounters" Version="0.0.2" />
+    <PackageReference Include="Vostok.Sys.Metrics.Windows" Version="0.0.1" />
+  </ItemGroup>
+  
+  <Target Name="BuildTestProcess">
+    <Exec Command="dotnet build -c Release" WorkingDirectory="..\TestProcess" />
+  </Target>
+
+  <ItemGroup>
+    <Reference Include="TestProject">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TestProcess\bin\Release\net472\TestProcess.exe</HintPath>
+    </Reference>
+  </ItemGroup>
+  
+</Project>
